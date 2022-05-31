@@ -22,12 +22,12 @@ in this lab we implemented these modules:
 
 ---
 To run the application first you need to create two postgresql databases:  
-    - forecast-stores
+    - forecast-stores  
     - forecast-users
 
-cd forecast-backend; npm run start
-cd gateway-api; npm run start
-cd forecastUI; ng serve -o
+cd forecast-backend; npm run start  
+cd gateway-api; npm run start  
+cd forecastUI; ng serve -o  
 
 ![img_2.png](img_2.png)
 ![img_3.png](img_3.png)
