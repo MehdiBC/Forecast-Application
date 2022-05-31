@@ -1,0 +1,33 @@
+<div class="container alert alert-secondary w-50">
+  <h1 id="form-title" class="alert-secondary">Sign up</h1>
+  <form class="justify-content-center" [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm.value)">
+    <label for="email">Email:</label>
+    <input formControlName="email" placeholder="Enter your email" type="email" id="email" class="form-control" name="email">
+    <label class="mt-3" for="password">Password:</label>
+    <input formControlName="password" placeholder="Enter your password" type="password" id="password" class="form-control" name="password">
+    <label class="mt-3" for="password">Role:</label>
+    <div class="d-flex">
+      <div class="form-check me-3">
+        <input formControlName="role" value="forecaster" class="form-check-input" type="radio" name="role" id="forecaster" checked>
+        <label class="form-check-label" for="forecaster">
+          Forecaster
+        </label>
+      </div>
+      <div class="form-check me-3">
+        <input formControlName="role" value="planner" class="form-check-input" type="radio" name="role" id="planner">
+        <label class="form-check-label" for="planner">
+          Planner
+        </label>
+      </div>
+      <div class="form-check me-3">
+        <input formControlName="role" value="both" class="form-check-input" type="radio" name="role" id="both">
+        <label class="form-check-label" for="both">
+          Both
+        </label>
+      </div>
+    </div>
+    <div class="d-flex flex-row-reverse mt-3">
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    </div>
+  </form>
+</div>

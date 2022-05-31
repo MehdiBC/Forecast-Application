@@ -1,5 +1,12 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Product } from '../../product/entities/product.entity';
+import { Store } from '../../store/entities/store.entity';
 
 @Entity('forecasts')
 export class Forecast {
@@ -9,6 +16,10 @@ export class Forecast {
   date: Date;
   @Column({ name: 'number_of_sales', nullable: false })
   numberOfSales: number;
-  @ManyToOne(() => Product, { cascade: true })
+  @ManyToOne(() => Product, (product) => product.forecasts)
+  @JoinColumn({ name: 'product_id' })
   product: Product;
+  @ManyToOne(() => Store, (store) => store.forecasts)
+  @JoinColumn({ name: 'store_id' })
+  store: Store;
 }

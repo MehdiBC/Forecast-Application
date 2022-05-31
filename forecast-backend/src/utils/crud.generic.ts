@@ -1,10 +1,26 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-export function generateCrudService(Entity: any): any {
-  class GenericService {
+interface GenericCrudService {
+  readonly entityRepository: Repository<any>;
+
+  create(createEntityDto: any): Promise<any>;
+
+  findAll(): Promise<any[]>;
+
+  findOne(id: number): Promise<any>;
+
+  update(updateEntityDto: any): Promise<any>;
+
+  remove(id: number);
+}
+
+export type GenericCrudServiceRef = new (...args: any) => GenericCrudService;
+
+export function generateCrudService(Entity: any): GenericCrudServiceRef {
+  class GenericService implements GenericCrudService {
     @InjectRepository(Entity)
-    protected readonly entityRepository: Repository<any>;
+    readonly entityRepository: Repository<any>;
 
     create(createEntityDto: any): Promise<any> {
       const createEntity = this.entityRepository.create(createEntityDto);

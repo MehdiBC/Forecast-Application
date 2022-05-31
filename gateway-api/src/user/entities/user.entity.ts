@@ -17,7 +17,7 @@ export class User {
   password: string;
   @Column({
     enum: Role,
-    default: Role.USER,
+    default: Role.FORECASTER,
     nullable: false,
   })
   role: Role;

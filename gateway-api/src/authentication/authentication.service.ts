@@ -27,18 +27,16 @@ export class AuthenticationService {
     return null;
   }
 
-  async login(user: LoginUserDto): Promise<AuthenticationToken> {
+  login(user: LoginUserDto): AuthenticationToken {
     const payload = {
       username: user.email,
       sub: user.id,
     };
-    return {
-      accessToken: this.jwtService.sign(payload),
-    };
+    return { accessToken: this.jwtService.sign(payload) };
   }
 
   async signUp(createUserDto: CreateUserDto): Promise<AuthenticationToken> {
     const user = await this.userService.create(createUserDto);
-    return await this.login(user);
+    return this.login(user);
   }
 }

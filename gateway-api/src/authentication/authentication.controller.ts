@@ -1,8 +1,8 @@
 import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthenticationService } from './authentication.service';
 import { LocalAuthGuard } from './guards/local.auth.guard';
-import { AuthenticationToken } from './dto/token.authentication';
 import { CreateUserDto } from '../user/dto/create-user.dto';
+import { AuthenticationToken } from './dto/token.authentication';
 
 @Controller('auth')
 export class AuthenticationController {
@@ -10,8 +10,8 @@ export class AuthenticationController {
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Req() req): Promise<AuthenticationToken> {
-    return await this.authService.login(req.user);
+  login(@Req() req): AuthenticationToken {
+    return this.authService.login(req.user);
   }
 
   @Post('sign-up')

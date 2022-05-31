@@ -1,21 +1,14 @@
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { Product } from '../../product/entities/product.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Forecast } from '../../forecast/entities/forecast.entity';
 
 @Entity('stores')
 export class Store {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'store_id' })
   id: number;
   @Column({ nullable: false })
   name: string;
   @Column({ nullable: false })
   description: string;
-  @ManyToMany(() => Product, { cascade: true })
-  @JoinTable()
-  products: Product[];
+  @OneToMany(() => Forecast, (forecast) => forecast.store)
+  forecasts: Forecast[];
 }

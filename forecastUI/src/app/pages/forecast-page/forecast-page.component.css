@@ -1,0 +1,20 @@
+.item {
+  color: #41464b;
+}
+
+.item:hover {
+  background-color: #e2e3e5;
+  border-color: #d3d6d8;
+  cursor: pointer;
+}
+
+.selected-item, .selected-item:hover{
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
+
+#divChart {
+  display: block;
+  width: 80vw;
+}
