@@ -62,7 +62,7 @@ export class ForecastPageComponent implements OnInit {
     }).subscribe({
       next: (value)=> {
         this.forecasts = value;
-        this.label = this.forecasts.map((value) => value.date.toLocaleDateString('fr'));
+        this.label = this.forecasts.map((value) => value.date);
         this.datasets = [{
           label: 'Forecasts',
           data: this.forecasts.map((value) => value.numberOfSales),

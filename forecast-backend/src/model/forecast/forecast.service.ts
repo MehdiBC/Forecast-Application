@@ -7,9 +7,9 @@ import { CreateForecastDto } from './dto/create-forecast.dto';
 export class ForecastService extends generateCrudService(Forecast) {
   async findAllForecasts(forecastDto: CreateForecastDto): Promise<Forecast[]> {
     const startDate = new Date(forecastDto.date);
-    startDate.setMonth(forecastDto.date.getMonth() - 6);
+    startDate.setMonth(forecastDto.date.getMonth() - 1);
     const endDate = new Date(forecastDto.date);
-    endDate.setMonth(forecastDto.date.getMonth() + 6);
+    endDate.setMonth(forecastDto.date.getMonth() + 1);
 
     const forecastsInDb = await this.entityRepository
       .createQueryBuilder('forecasts')
@@ -30,7 +30,7 @@ export class ForecastService extends generateCrudService(Forecast) {
         forecastsInDb.push({
           ...forecastDto,
           date: new Date(date),
-          numberOfSales: Math.floor(Math.random() * 200),
+          numberOfSales: Math.floor(Math.random() * 5),
         });
       }
       date.setDate(date.getDate() + 1);

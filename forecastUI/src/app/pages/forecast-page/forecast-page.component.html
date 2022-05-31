@@ -57,11 +57,12 @@
           <canvas baseChart
                   [datasets]="datasets"
                   [labels]="label"
-                  [type]="'bar'">
+                  [type]="'line'">
           </canvas>
         </div>
-        <div class="step-container">
-          <button nbButton (click)="stepper.reset()">Try again</button>
+        <div class="flex-row">
+          <button>+ Month</button>
+          <button>- Month</button>
         </div>
       </nb-step>
     </nb-stepper>
